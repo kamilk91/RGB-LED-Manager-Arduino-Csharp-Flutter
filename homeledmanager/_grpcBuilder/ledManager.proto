@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+package ledmanager;
+
+
+service LedManager{
+	rpc ChangeLightState (State) returns (Empty){};
+	rpc SetColor (stream ColorValue) returns (Empty){};
+	rpc SetColorString (stream ColorValueString) returns (Empty) {};
+}
+
+
+message Empty{
+
+}
+message ColorValue{
+	int32 R = 1;
+	int32 G = 2;
+	int32 B = 3;
+	int32 Opacity = 4;
+}
+
+message ColorValueString{
+	string R = 1;
+	string G = 2;
+	string B = 3;
+	string Opacity = 4;
+}
+
+message State{
+	bool TurnedOn = 1;
+}
